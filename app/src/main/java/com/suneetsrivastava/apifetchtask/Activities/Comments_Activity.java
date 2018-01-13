@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.suneetsrivastava.apifetchtask.Adapter.CommentsRecyclerAdapter;
 import com.suneetsrivastava.apifetchtask.Data.Comments;
-import com.suneetsrivastava.apifetchtask.Data.OkHttpConnector;
 import com.suneetsrivastava.apifetchtask.R;
 
 
@@ -14,7 +13,6 @@ import java.util.List;
 public class Comments_Activity extends AppCompatActivity {
     List<Comments> comments;
     List<Comments> fetchedComments;
-    private OkHttpConnector connector = new OkHttpConnector();
     private CommentsRecyclerAdapter commentsRecyclerAdapter;
 
 

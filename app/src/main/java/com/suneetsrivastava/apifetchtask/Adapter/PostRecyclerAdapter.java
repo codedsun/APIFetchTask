@@ -2,6 +2,7 @@ package com.suneetsrivastava.apifetchtask.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +29,16 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(c).inflate(R.layout.post_view,parent,false));
+
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Post p = postList.get(position);
-        holder.user_id.setText(p.getUserId());
-        holder.id.setText(p.getId());
-        holder.title.setText(p.getTitle());
-        holder.body.setText(p.getBody());
+        Log.e("TAG", "onCreateViewHolder: "+postList.size() +postList.get(2).getTitle());
+        holder.id.setText(""+ postList.get(position).getId());
+        holder.body.setText(postList.get(position).getBody());
+        holder.user_id.setText(""+postList.get(position).getUserId());
+        holder.title.setText(postList.get(position).getTitle());
     }
 
     @Override
@@ -52,7 +54,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
-            user_id = (TextView) itemView.findViewById(R.id.user_id);
+            user_id = (TextView) itemView.findViewById(R.id.post_userid);
             id = (TextView) itemView.findViewById(R.id.post_id);
             title = (TextView) itemView.findViewById(R.id.post_title);
             body = (TextView) itemView.findViewById(R.id.post_body);
