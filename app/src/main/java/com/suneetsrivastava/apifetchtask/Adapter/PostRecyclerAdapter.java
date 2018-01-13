@@ -38,7 +38,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.e("TAG", "onCreateViewHolder: "+postList.size() +postList.get(2).getTitle());
+        //Log.e("TAG", "onCreateViewHolder: "+postList.size() +postList.get(2).getTitle());
         holder.id.setText(""+ postList.get(position).getId());
         holder.body.setText(postList.get(position).getBody());
         holder.user_id.setText(""+postList.get(position).getUserId());
@@ -62,9 +62,8 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e("SUNEET", "onClick: "+getAdapterPosition());
                     Intent i = new Intent(c, Comments_Activity.class);
-                    i.putExtra("position",getAdapterPosition());
+                    i.putExtra("position", getAdapterPosition());
                     i.putExtra("post_id",id.getText().toString());
                     i.putExtra("body",body.getText().toString());
                     i.putExtra("title",title.getText().toString());

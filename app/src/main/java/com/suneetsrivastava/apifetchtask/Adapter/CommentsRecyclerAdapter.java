@@ -2,6 +2,7 @@ package com.suneetsrivastava.apifetchtask.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class CommentsRecyclerAdapter extends RecyclerView.Adapter<CommentsRecycl
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
             Comments c = comments.get(position);
-            holder.user_id.setText(c.getId());
+            holder.user_id.setText(c.getId()+"");
             holder.name.setText(c.getName());
             holder.email.setText(c.getEmail());
             holder.body.setText(c.getBody());
@@ -43,7 +44,7 @@ public class CommentsRecyclerAdapter extends RecyclerView.Adapter<CommentsRecycl
 
     @Override
     public int getItemCount() {
-        return 0;
+        return comments.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

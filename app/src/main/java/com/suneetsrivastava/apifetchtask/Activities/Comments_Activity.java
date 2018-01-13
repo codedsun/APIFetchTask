@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -34,11 +36,12 @@ public class Comments_Activity extends AppCompatActivity{
     private static String postId;
     private static String title;
     private static String body;
-    private String adapterPosition;
+    private int adapterPosition;
     private RecyclerView commentRecyclerView;
     private TextView post_idtextView;
     private TextView titletextView;
     private TextView bodytextView;
+    private int postIdInt;
 
 
 
@@ -58,12 +61,11 @@ public class Comments_Activity extends AppCompatActivity{
         postId = i.getStringExtra("post_id");
         title = i.getStringExtra("title");
         body = i.getStringExtra("body");
-        adapterPosition = i.getStringExtra("position");
-        post_idtextView.setText(postId);
+        adapterPosition = i.getIntExtra("position",-1);
+        post_idtextView.setText(postId.toString());
         titletextView.setText(title);
         bodytextView.setText(body);
-
-
+        postIdInt = Integer.parseInt(postId);
 
     }
 
@@ -93,14 +95,33 @@ public class Comments_Activity extends AppCompatActivity{
             Gson gson = new Gson();
             Type type = new TypeToken<List<Comments>>(){}.getType();
             comments = gson.fromJson(result, type);
-            Log.e("TAG", "onPostExecute: "+comments.get(1).getName() );
+            getFetchedComments();
 
         }
     }
 
-    private List<Comments> getFetchedComments(){
+    private void getFetchedComments(){
         fetchedComments = new ArrayList<>();
+//        for(Comments c: comments){
+//
+//            if(c.getPostId() == Integer.parseInt(postId)){
+//                fetchedComments.add(c);
+//                Log.e("COMMENTS", "getFetchedComments: "+c.getName() );
+//
+//            }
+//        }
 
-        return fetchedComments;
+        for (int i = 0; i<comments.size(); i++){
+            if(comments.get(i).getPostId() == postIdInt){
+                fetchedComments.add(comments.get(i));
+            }
+        }
+
+        CommentsRecyclerAdapter commentsRecyclerAdapter = new CommentsRecyclerAdapter(this,fetchedComments);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        commentRecyclerView.setLayoutManager(layoutManager);
+        commentRecyclerView.setAdapter(commentsRecyclerAdapter);
+        commentsRecyclerAdapter.notifyDataSetChanged();
+
     }
 }

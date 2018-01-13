@@ -21,9 +21,7 @@ import com.suneetsrivastava.apifetchtask.Adapter.PostRecyclerAdapter;
 import com.suneetsrivastava.apifetchtask.Application;
 import com.suneetsrivastava.apifetchtask.Data.Post;
 import com.suneetsrivastava.apifetchtask.R;
-import com.suneetsrivastava.apifetchtask.Utilties.DataInterface;
 
-import org.json.JSONArray;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
