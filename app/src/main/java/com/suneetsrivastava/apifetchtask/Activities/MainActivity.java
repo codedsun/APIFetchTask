@@ -21,6 +21,7 @@ import com.suneetsrivastava.apifetchtask.Adapter.PostRecyclerAdapter;
 import com.suneetsrivastava.apifetchtask.Application;
 import com.suneetsrivastava.apifetchtask.Data.Post;
 import com.suneetsrivastava.apifetchtask.R;
+import com.suneetsrivastava.apifetchtask.Utilties.DataInterface;
 
 import org.json.JSONArray;
 
@@ -33,7 +34,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     public  List<Post> postList;
     private OkHttpClient client = new OkHttpClient();

@@ -11,8 +11,6 @@ public class Comments {
     String email;
     String body;
 
-    public Comments() {
-    }
 
     public Comments(int id, int postId, String name, String email, String body) {
         this.id = id;
